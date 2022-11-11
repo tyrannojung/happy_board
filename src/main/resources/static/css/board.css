@@ -1,0 +1,824 @@
+/* 공통 */
+* {
+    outline-color: #bfcef8;
+    object-fit: contain;
+}
+body {
+    margin: 0;
+    /*  */
+    background: #ddd;
+    height: 100%;
+    font-family: "Noto Sans KR", sans-serif;
+}
+button {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.wrap {
+    min-height: 100%;
+    position: relative;
+
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    padding: 0;
+    margin: 0;
+}
+
+.logo {
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    text-indent: -9999px;
+    float: left;
+}
+
+.logo a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("../img/logo.png") no-repeat center / contain;
+}
+
+.right_menu {
+    width: 230px;
+    height: 100%;
+    float: right;
+}
+
+.menu_login_ck {
+    width: 100px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+
+.user_img {
+    width: 20px;
+    height: 100%;
+    background: url("../img/my_icon.png") no-repeat center / contain;
+    float: left;
+}
+
+.menu_txt {
+    font-size: 12px;
+    margin-right: 7px;
+}
+
+.table_fixed {
+    table-layout: fixed;
+    word-break: break-all;
+    line-height: 40px;
+    border-collapse: collapse;
+}
+.od_detail_table {
+    width: 100% !important;
+    font-size: 13px;
+}
+
+.od_detail_table tbody td {
+    padding: 3px;
+    box-sizing: border-box;
+    line-height: 17px;
+}
+table td,
+table th {
+    line-height: 20px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    padding: 10px 0;
+}
+.margin_bot30 {
+    margin-bottom: 30px;
+}
+.od_detail_table input {
+    width: 100%;
+    border: 1px solid #ddd;
+    margin-top: 3px;
+    padding: 3px;
+    box-sizing: border-box;
+}
+.od_detail_table .dlvy_select {
+    width: 100%;
+}
+.dlvy_apy_bt {
+    margin-top: 3px;
+    border: 1px solid #ddd;
+    background: #f8f8f8;
+    color: gray;
+    padding: 3px 15px;
+    box-sizing: border-box;
+}
+.dlvy_apy_bt:hover {
+    color: #222;
+    background: #ddd;
+}
+td > select {
+    border: 1px solid #ddd;
+    height: 30px;
+    outline: none;
+}
+.cutline {
+    width: 5px;
+    height: 1px;
+    background: gray;
+    margin: 40px auto;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+    display: block;
+    padding: 0.2em;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+table {
+    width: 95%;
+    /* height: 30px; */
+    line-height: 40px;
+    font-size: 14px;
+    margin: 0 auto;
+}
+tbody > tr:hover {
+    background: #f8f8f8;
+}
+tbody {
+    text-align: center;
+}
+
+/* header */
+
+.header {
+    width: 100%;
+    height: 50px;
+    line-height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    z-index: 99999999;
+    line-height: 18px;
+    color: gray;
+    background: white;
+}
+.w100 {
+    width: 70%;
+}
+
+.my_login {
+    float: right;
+    font-size: 14px;
+    color: gray;
+    margin-right: 10px;
+}
+
+/* ---회원관리 */
+.user_set_txt {
+    margin: 0 0 20px 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}
+.main_right {
+    width: calc(100% - 250px - 0.1px);
+    transform: translate(-50%, -60%);
+    top: 60%;
+    left: 50%;
+    position: fixed;
+}
+.main_pan {
+    width: 70%;
+    min-width: 900px;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin: 0px auto;
+
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.user_manager {
+    width: 100%;
+    margin: 0px auto;
+    position: relative;
+}
+.user_set {
+    margin-bottom: 20px;
+}
+
+.user_table {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+}
+
+/* 정산 관리 / 검색폼*/
+
+.tb_option {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+}
+.tb_calculate_option {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+}
+.tb_option_w50 {
+    width: 50%;
+    float: left;
+}
+.user_w50_over {
+    overflow: hidden;
+}
+.none_botborder {
+    border-bottom: 0;
+}
+.tb_txt {
+    width: 200px;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f0f0f0;
+    float: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+.tb_input,
+.tb_day,
+.tb_ctgr {
+    width: calc(100% - 200px - 0.01px);
+    height: 100%;
+    float: left;
+}
+.total_input {
+    font-size: 16px;
+    font-weight: 600;
+}
+.color_plus {
+    color: #324c91;
+}
+.color_minus {
+    color: rgb(219, 33, 0);
+}
+.tb_day {
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+.tb_input > input {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    /* height: 100%; */
+    padding-left: 15px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+.tb_ctgr > select {
+    width: calc(100% / 3 - 5px);
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.tb_input > select {
+    border: none;
+    padding-left: 15px;
+    box-sizing: border-box;
+    width: 100px;
+    height: 70%;
+}
+.tb_day > button {
+    width: 40px;
+    height: 25px;
+    font-size: 12px;
+    padding: 0;
+    border: 1px solid #ddd;
+}
+.Date {
+    border: none;
+    border-bottom: 1px solid gray;
+    box-sizing: border-box;
+    margin: 0 5px;
+}
+.tb_dayck {
+    margin-left: 15px;
+    width: 80px;
+}
+.tb_dayck2 {
+    margin-left: 0px;
+    width: 80px;
+}
+.calendar {
+    width: 20px;
+    height: 20px;
+    transform: translateY(3px);
+}
+.tb_day > span {
+    font-weight: 800;
+    width: 30px;
+    text-align: center;
+}
+.tb_onemon {
+    width: 100px;
+    /* height: 100%; */
+    border: none;
+    box-sizing: border-box;
+}
+.main_pan_bot {
+    width: 100%;
+}
+.search_bt {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+.search_txt {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    font-size: 14px;
+    background: #febb6c;
+    border-radius: 3px;
+}
+.search_txt > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.s_bt_reset {
+    margin-left: 10px;
+    background: #febb6c;
+}
+.s_bt_excel {
+    width: 130px;
+    margin-left: 10px;
+    background: #4a609c;
+}
+.s_bt_excel:hover {
+    background: #fa961b;
+}
+
+.user_info {
+    margin-top: 20px;
+    /* height: 500px; */
+    padding: 30px 15px;
+}
+
+.line {
+    width: 95%;
+    height: 1px;
+    background: #ddd;
+    margin: 15px auto;
+}
+.center {
+    width: 100%;
+}
+.user_info_page {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
+.page_box {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    background: white;
+    color: #222;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+.page_box_ck {
+    background: #fa961b;
+    color: white;
+}
+
+.page_button {
+    text-align: right;
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    background: rgb(75, 75, 75);
+    color: white;
+    margin-right: 20px;
+}
+
+.st_ap_bot > span {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    background: rgb(75, 75, 75);
+    color: white;
+    margin-right: 20px;
+}
+/* .st_ap_bot > span:nth-of-type(1) {
+    background: #fff;
+    color: #222;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+} */
+.st_ap_bot > span > a,
+.page_box > a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.prd_price {
+    font-size: 12px;
+    color: orangered;
+}
+.total {
+    height: 50px;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.total_txt {
+    text-align: right;
+    box-sizing: border-box;
+}
+.total_txt > div {
+    display: inline-block;
+    margin: 0 0 0 15px;
+}
+.total th span {
+    margin: 0 5px;
+}
+.new_qna {
+    font-weight: 500;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+.star {
+    color: #ddd;
+}
+.review_star > span:nth-of-type(1),
+.review_star > span:nth-of-type(2),
+.review_star > span:nth-of-type(3) {
+    color: rgb(241, 165, 0);
+}
+.review_count {
+    font-size: 11px;
+    color: gray;
+}
+
+.calculate_top {
+    box-sizing: border-box;
+}
+
+/* 스토어 관리 */
+
+.store_apply {
+    position: relative;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+.st_ap_top {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+.st_ap_show {
+    font-size: 14px;
+    margin-left: 20px;
+    float: left;
+}
+.st_ap_show > select {
+    margin: 0px 5px;
+    border: 1px solid #ddd;
+}
+.st_ap_search {
+    font-size: 14px;
+    float: right;
+}
+.st_ap_search > input {
+    border: 1px solid #ddd;
+    width: 100px;
+    padding: 0;
+    margin: 0 30px 0 5px;
+}
+
+.st_ap_bot {
+    width: 100%;
+    height: 60px;
+    text-align: right;
+}
+.st_ap_page {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
+
+.button_box {
+    width:100%;
+    text-align: right
+}
+
+.page_button {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    background: #febb6c;
+    color: white;
+    margin-right: 20px;
+}
+
+.pro_register {
+    padding: 10px 30px;
+}
+.reg_topmenu {
+    width: 100%;
+    height: 40px;
+    position: relative;
+
+
+    margin-bottom: 20px;
+}
+.pro_banner_txt {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+
+
+    position: absolute;
+    left: 0;
+}
+.banner_bt {
+    width: 130px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    margin: 0 5px;
+
+
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+.pro_register_txt {
+    margin: 0 0 20px 0px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}
+.register_content {
+    width: 100%;
+    height: 50px;
+    line-height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 5px auto 10px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+.notice_mtxt {
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+.notice_stxt {
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.notice_stxt > span {
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.notice_stxt > div {
+    line-height: 30px;
+}
+.reg_select {
+    width: calc(100% / 3);
+    height: 100%;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    float: left;
+    font-size: 14px;
+    color: #222;
+}
+.register_content > input {
+    width: calc(100%);
+    height: 100%;
+    border: none;
+    outline: none;
+    float: left;
+    font-size: 14px;
+    color: #222;
+    padding: 0 20px 0 20px;
+    box-sizing: border-box;
+}
+
+
+.oneline_title > select {
+    width: 150px;
+}
+.oneline_title > input {
+    width: calc(100% - 150px);
+}
+.reg_box {
+    width: 100%;
+    height: 300px;
+    margin: 15px auto;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    position: relative;
+}
+.box_option {
+    width: 100%;
+    height: 40px;
+    background: #ddd;
+    position: absolute;
+    top: 0;
+}
+.box_size {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.reg_img_com {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #222;
+}
+.img_com_txt {
+    font-weight: 700;
+}
+.img_com_txt > span {
+    font-size: 10px;
+    color: gray;
+    font-weight: 300;
+    margin-right: 10px;
+}
+.img_txt_bt {
+    background: white;
+    border: 1px solid #ddd;
+    outline: none;
+    cursor: pointer;
+}
+.img_txt_bt:hover {
+    background: #556fb5;
+    color: white;
+}
+.img {
+    width: 100%;
+    /* height: 150px; */
+    overflow: hidden;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+.banner_img {
+    margin-top: 10px;
+}
+.img_com_view {
+    width: 150px;
+    height: 150px;
+    background: #eeeeee;
+    margin: 10px 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+
+
+    float: left;
+
+
+    position: relative;
+}
+.img_com_view > span {
+    display: none;
+    /* display: inline-block; */
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #324c91;
+    font-size: 12px;
+    color: white;
+}
+.img > div:nth-of-type(1) {
+    background: url(../img/no_image2.png) no-repeat center / cover;
+}
+.img_com_view_ck {
+    border: 3px solid #324c91;
+}
+
+
+.reg_line {
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    margin: 10px auto;
+}
+.reg_price {
+    overflow: hidden;
+}
+.reg_price .title,
+.stock_title {
+    float: left;
+    width: 105px;
+    height: 30px;
+    line-height: 50px;
+    font-size: 14px;
+}
+.reg_confirm {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+.confirm_bt {
+    display: inline-block;
+    width: 130px;
+    height: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    outline: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.confirm_bt > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.bg_red {
+    border: none;
+    background: rgb(192, 34, 6);
+    color: #fff;
+}
+.blue_color {
+    color: #324c91;
+}
+.color_blue {
+    background: #febb6c;
+    color: white;
+}
+.color_blue:hover {
+    background: #fa961b;
+}
+
+.input_warning {
+    color:orangered;
+    font-size: 12px;
+    display: none;
+
+}
+
+.reg_price_text {
+    display: inline-block;
+    width: 150px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+}

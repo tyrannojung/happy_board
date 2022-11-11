@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        maven {
+            url 'http://repo.happymoney.co.kr:8082/repository/happymoney-group/'
+            allowInsecureProtocol true
+        }
+    }
+}
+
+
+rootProject.name = 'test'

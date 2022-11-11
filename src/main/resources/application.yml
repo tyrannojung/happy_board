@@ -1,0 +1,33 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+    freemarker:
+      cache: false
+    restart:
+      enabled: true
+  datasource:
+    hikari:
+      jdbc-url: "jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"
+      username: "root"
+      password: "1234"
+      driver-class-name: "net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
+      connection-timeout: 200000
+      auto-commit: false
+      minimum-idle: 3
+      maximum-pool-size: 3
+      connection-test-query: SELECT 1 FROM DUAL
+mybatis:
+  type-aliases-package: com.happymoney.test
+  mapper-locations: mapper/*.xml
+server:
+  port: 8081
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

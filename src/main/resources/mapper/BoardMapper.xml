@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happymoney.test.board.mapper.BoardMapper">
+
+    <resultMap id="BoardDTO" type="BoardDTO">
+        <id property="board_idx" column="board_idx" />
+        <result property="member_idx" column="member_idx" />
+        <result property="board_title" column="board_title" />
+        <result property="board_content" column="board_content" />
+        <result property="board_udate" column="board_udate" />
+        <result property="board_rdate" column="board_rdate" />
+        <association property="memberDTO" column="member_idx" javaType="MemberDTO" resultMap="memberDTO" />
+    </resultMap>
+
+    <resultMap id="memberDTO" type="MemberDTO">
+        <id property="member_idx" column="member_idx" />
+        <result property="member_id" column="member_id" />
+        <result property="member_password" column="member_password" />
+        <result property="member_email" column="member_email" />
+        <result property="member_name" column="member_name" />
+        <result property="member_role" column="member_role" />
+        <result property="member_key" column="member_key" />
+        <result property="member_udate" column="member_udate" />
+        <result property="member_rdate" column="member_rdate" />
+    </resultMap>
+
+    <select id="boardList" resultMap="BoardDTO">
+        select
+            *
+        from (
+             select
+                ROW_NUMBER() OVER (ORDER BY b.board_idx desc) NUM
+                  , b.board_idx
+                  , b.board_title
+                  , b.board_content
+                  , b.board_udate
+                  , b.board_rdate
+                  , m.member_idx
+                  , m.member_id
+                  , m.member_password
+                  , m.member_email
+                  , m.member_name
+                  , m.member_role
+                  , m.member_key
+                  , m.member_udate
+                  , m.member_rdate
+             from
+                 board b
+                     join
+                 member m
+                 on
+                     b.member_idx = m.member_idx
+             where
+                 1=1
+             <if test="boardSearchDTO != null">
+                <if test="boardSearchDTO.search_content != null and !boardSearchDTO.search_content.equals('')">
+                    <choose>
+                        <when test ="boardSearchDTO.search_subject.equals('subject')">
+                        and
+                            b.board_title LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                        </when>
+                        <when test ="boardSearchDTO.search_subject.equals('content')">
+                        and
+                            b.board_content LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                        </when>
+                        <when test ="boardSearchDTO.search_subject.equals('id')">
+                        and
+                            m.member_id LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                        </when>
+                        <when test ="boardSearchDTO.search_subject.equals('name')">
+                        and
+                            m.member_name LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                        </when>
+                    </choose>
+                 </if>
+                 <if test="boardSearchDTO.search_start_date != null and !boardSearchDTO.search_start_date.equals('') and boardSearchDTO.search_end_date != null and !boardSearchDTO.search_end_date.equals('') ">
+                    and
+                     to_date(b.board_rdate, 'YYYY-MM-DD HH24:MI:SS') between to_date(#{boardSearchDTO.search_start_date}, 'YYYY-MM-DD HH24:MI:SS') and (to_date(#{boardSearchDTO.search_end_date}, 'YYYY-MM-DD HH24:MI:SS') + 0.99999)
+                 </if>
+               AND
+                 1=1
+             </if>
+        )
+        where
+            NUM
+        BETWEEN
+            #{pageStartNum} AND #{pageNemPer}
+    </select>
+
+    <select id="boardListCount" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            board b
+        join
+            member m
+        on
+            b.member_idx = m.member_idx
+        where
+            1=1
+        <if test="boardSearchDTO != null">
+            <if test="boardSearchDTO.search_content != null and !boardSearchDTO.search_content.equals('')">
+                <choose>
+                    <when test ="boardSearchDTO.search_subject.equals('subject')">
+                        and
+                        b.board_title LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                    </when>
+                    <when test ="boardSearchDTO.search_subject.equals('content')">
+                        and
+                        b.board_content LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                    </when>
+                    <when test ="boardSearchDTO.search_subject.equals('id')">
+                        and
+                        m.member_id LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                    </when>
+                    <when test ="boardSearchDTO.search_subject.equals('name')">
+                        and
+                        m.member_name LIKE '%' || #{boardSearchDTO.search_content} || '%'
+                    </when>
+                </choose>
+            </if>
+            <if test="boardSearchDTO.search_start_date != null and !boardSearchDTO.search_start_date.equals('') and boardSearchDTO.search_end_date != null and !boardSearchDTO.search_end_date.equals('') ">
+                and
+                to_date(b.board_rdate, 'YYYY-MM-DD HH24:MI:SS') between to_date(#{boardSearchDTO.search_start_date}, 'YYYY-MM-DD HH24:MI:SS') and (to_date(#{boardSearchDTO.search_end_date}, 'YYYY-MM-DD HH24:MI:SS') + 0.99999)
+            </if>
+            AND
+            1=1
+        </if>
+    </select>
+
+    <select id="boardDetail" resultMap="BoardDTO">
+        select
+            b.board_idx
+             , b.board_title
+             , b.board_content
+             , b.board_udate
+             , b.board_rdate
+             , m.member_idx
+             , m.member_id
+             , m.member_password
+             , m.member_email
+             , m.member_name
+             , m.member_role
+             , m.member_key
+             , m.member_udate
+             , m.member_rdate
+        from
+            board b
+        join
+            member m
+        on
+            b.member_idx = m.member_idx
+        where
+            board_idx = #{board_idx}
+    </select>
+
+    <insert id="boardCreateAction" >
+        insert
+        into
+            board(
+                    board_idx
+                    , member_idx
+                    , board_title
+                    , board_content
+        )
+        values(
+                  board_idx.NEXTVAL
+                , #{member_idx}
+                , #{board_title}
+                , #{board_content}
+              )
+    </insert>
+
+    <update id="boardUpdateAction">
+        update
+            board
+        set
+            board_title = #{board_title}
+            , board_content = #{board_content}
+            , board_udate = sysdate
+        where
+            board_idx = #{board_idx}
+        and
+            member_idx = #{member_idx}
+    </update>
+
+    <delete id="boardDeleteAction">
+        delete from
+                board
+        where
+            board_idx = #{board_idx}
+        and
+            member_idx = #{member_idx}
+    </delete>
+
+
+</mapper>
