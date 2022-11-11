@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <!-- Header -->
-    <link rel="stylesheet" href="/css/signIn.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/signIn.css">
     <%@include file="../include/header.jsp"%>
 </head>
 <body>

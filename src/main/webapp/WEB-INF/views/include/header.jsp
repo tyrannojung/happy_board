@@ -18,11 +18,11 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet"
 />
-<script src="/common/jquery/jquery-3.5.1.js"></script>
-<script src="/common/js/common.js"></script>
-
+<script src="${pageContext.request.contextPath}/resources/common/jquery/jquery-3.5.1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/common/js/common.js"></script>
 <!-- date picker -->
-<link rel="stylesheet" href="/common/jquery/jquery-ui.css" />
-<script type="text/javascript" charset="UTF-8" src="/common/jquery/jquery-ui.min.js"></script>
-<script type="text/javascript" charset="UTF-8" src="/common/jquery/jquery-ui.datepicker.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/jquery/jquery-ui.css" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico" />
+<script type="text/javascript" charset="UTF-8" src="${pageContext.request.contextPath}/resources/common/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="${pageContext.request.contextPath}/resources/common/jquery/jquery-ui.datepicker.js"></script>
 <!-- -->

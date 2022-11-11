@@ -41,7 +41,7 @@ public class DatabaseConfig {
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/META-INF/mapper/*.xml"));
         sqlSessionFactoryBean.setTypeAliasesPackage(""
         		+ ", com.happymoney.test.member.dto"
                 + ", com.happymoney.test.board.dto"
