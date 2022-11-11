@@ -13,9 +13,9 @@ spring:
       enabled: true
   datasource:
     hikari:
-      jdbc-url: 'jdbc:log4jdbc:oracle:thin:@192.168.1.252:1522:orcl'
-      username: 'happy_dev'
-      password: 'dev1023'
+      jdbc-url: 'jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl'
+      username: 'root'
+      password: '1234'
       driver-class-name: 'net.sf.log4jdbc.sql.jdbcapi.DriverSpy'
       connection-timeout: 200000
       auto-commit: false
